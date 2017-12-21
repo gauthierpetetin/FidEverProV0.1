@@ -19,12 +19,17 @@ page-signup {
       padding: 5px;
     }
 
+    .centered-items{
+      width : 400px !important;
+    }
+
     .invalid {
       border-bottom: 1px solid #FF6153;
     }
 
     .error-message .item-inner {
       border-bottom: 0 !important;
+      width : 400px !important;
     }
 
 }

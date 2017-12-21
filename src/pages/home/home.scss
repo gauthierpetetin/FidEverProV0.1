@@ -1,10 +1,18 @@
 page-home {
 
-  @import "../../theme/variables.css";
+  @import "../../theme/variables.scss";
 
+  ion-content{
+      background-image: url('../assets/images/background/background75.png') !important;
+  }
+
+.greyBar {
+  background-color: color($colors, fidGrey);
+  text-align: center;
+}
 
 .toolbar-background {
-  background-color: #fe9400;
+  background-color: color($colors, fidOrange);
 }
 
 .toolbar-title {
@@ -13,6 +21,80 @@ page-home {
 
 .bar-button-default {
   color : white
+}
+
+ion-list-header {
+  height: 30px;
+  background-color: black;
+}
+
+ion-item-sliding {
+  margin: 0 0;
+  padding: 0 0;
+  //opacity:0.7;
+  background-color: transparent !important;
+}
+
+button{
+  margin: 0 0;
+  padding: 0 0;
+}
+
+ion-col{
+  //vertical-align: middle;
+  margin: 0 0;
+  padding: 0 0;
+  align-self: stretch;
+}
+
+ion-row{
+  //margin: 0 0;
+  //padding: 0 0;
+  //background-color: blue !important;
+}
+
+h2, h3{
+  //background-color: yellow;
+}
+
+.ion-col1{
+  flex: 0 0 50px;
+  margin: 0 0;
+  padding: 0 0;
+  align-self: stretch;
+  //background-color: green;
+}
+
+.ion-col3{
+  flex: 0 0 30%;
+  margin: 0 0;
+  padding: 5px 0;
+  align-self: stretch;
+  //background-color: green;
+}
+
+.centered-image{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.small-span{
+  margin: 0 5px;
+  padding: 5px 0;
+  //background-color: blue;
+}
+
+.no-span{
+  margin: 0 0;
+  padding: 0 0;
+}
+
+.item-content{
+  //background-color: white;
 }
 
   form {
@@ -43,5 +125,6 @@ page-home {
   .error-message .item-inner {
     border-bottom: 0 !important;
   }
+
 
 }

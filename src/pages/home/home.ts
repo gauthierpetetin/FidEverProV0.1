@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { App, NavController, NavParams} from 'ionic-angular';
 
-import { NavController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 
 import { AuthProvider } from '../../providers/auth/auth';
 
@@ -12,15 +13,20 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class HomePage {
 
   constructor(
+    public appCtrl: App,
     public navCtrl: NavController,
-    public authProvider: AuthProvider) {
+    public navParams: NavParams,
+    public authProvider: AuthProvider
+  ){}
 
-  }
+
 
   logOut(): void {
+    console.log('Open logOut');
     this.authProvider.logoutUser().then(() => {
-      this.navCtrl.setRoot('LoginPage');
+      this.appCtrl.getRootNav().setRoot(LoginPage);
     });
+    console.log('Close logOut');
   }
 
 }

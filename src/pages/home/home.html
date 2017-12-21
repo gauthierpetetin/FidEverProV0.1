@@ -1,19 +1,150 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only padding (click)="showProfile()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
-      HomePage
+      Coin Wallet
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="logOut()">
-        <ion-icon name="log-out"></ion-icon>
+      <button ion-button icon-only padding (click)="showMap()">
+        <ion-icon name="map"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
+
+  <ion-list-header [ngStyle]="{'background-color': 'rgba(255, 255, 255, 0.85)'}">
+    <div class="item-content">
+     <ion-row style="padding-right: 10%">
+
+      <ion-col class="ion-col1">
+      </ion-col>
+
+      <ion-col>
+        <div class="small-span">
+          <h3 class="text" text-center>
+            CoinName
+          </h3>
+        </div>
+      </ion-col>
+
+      <ion-col class="ion-col3">
+        <div class="small-span">
+          <h3 class="text" text-center>
+            Amount
+          </h3>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </div>
+  </ion-list-header>
+
+  <img-loader src="assets/images/background/background75.png" style="display:none" useImg></img-loader>
+  <img-loader src="assets/images/background/background30.png" style="display:none" useImg></img-loader>
+  <img-loader src="assets/images/background/background15.png" style="display:none" useImg></img-loader>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let cc of ctx.c[contractAddresses]">
+    <!-- <ion-item-sliding *ngFor="let cc of _context[contractAddresses]"> -->
+    <!-- <ion-item-sliding *ngFor="let coin of coins | async"> -->
+      <button ion-item (click)="itemTapped($event, cc)" [ngStyle]="{'background-color': 'rgba(255, 255, 255, 0.85)'}">
+        <ion-row>
+
+          <ion-col class="ion-col1">
+            <!-- <img width="30" height="30" src={{coinIcons[coin.coinName]}}> -->
+            <div>
+              <img-loader
+                fallback="assets/images/coins/Coin.png"
+                class="centered-image"
+                width="40"
+                height="40"
+                src={{this.ctx.getCoinIcon(cc)}}>
+              </img-loader>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="small-span">
+              <h2 class="text" text-center>
+                {{this.ctx.getCoinName(cc)}}
+                <!-- {{this.ctx.c[names][cc]}} -->
+              </h2>
+            </div>
+          </ion-col>
+
+          <ion-col class="ion-col3">
+            <div class="small-span">
+              <h2 class="text" text-center>
+                {{this.ctx.getCoinAmount(cc)}}
+              </h2>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </button>
+
+      <!-- DELETE ITEM FROM DATABASE -->
+      <!-- <ion-item-options side="right">
+        <button ion-button color="danger" icon-only (click)="removeCoin(coin.id)"><ion-icon name="trash"></ion-icon></button>
+      </ion-item-options> -->
+
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>
+
+
+
+<ion-footer style="text-align: center;">
+<!-- align to the bottom of the page -->
+<!-- <div style="position: absolute; bottom: 0px; width: 100%; z-index:10; background-color: white"> -->
+  <div class="greyBar">
+    <p style="margin: 0 0; padding: 3px 0; color: white">Collect coins in a shop</p>
+  </div>
+
+  <button (click)="collectCoins()" style="background-color: white">
+    <ion-row style="margin: 0 0;padding: 0 0; background-color : transparent">
+
+      <ion-col style="position: relative;" [ngStyle]="{'background-color': 'transparent'}">
+      </ion-col>
+
+      <ion-col style="position:relative; text-align:center" [ngStyle]="{'background-color': 'transparent'}">
+          <img-loader src="assets/images/other/arrow_right.png" useImg></img-loader>
+          </ion-col>
+
+          <ion-col style="position:relative;" [ngStyle]="{'background-color': 'transparent'}">
+            <img-loader
+            [ngStyle]="{
+              'position':'absolute',
+              'top':'50%',
+              'left':'50%',
+              'height':'40px',
+              'width':'40px',
+              'margin-top':'-20px',
+              'margin-left':'-20px'
+            }"
+            src="assets/images/coins/Coin.png"
+            useImg
+            ></img-loader>
+          </ion-col>
+
+          <ion-col style="position:relative; text-align:center" [ngStyle]="{'background-color': 'transparent'}">
+            <img-loader src="assets/images/other/arrow_left.png" useImg></img-loader>
+          </ion-col>
+
+          <ion-col style="position:relative;" [ngStyle]="{'background-color': 'transparent'}">
+          </ion-col>
+
+        </ion-row>
+      </button>
+    <!-- </div> -->
+
+</ion-footer>

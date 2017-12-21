@@ -7,9 +7,10 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+  <div style="position : absolute; left : 50%; width : 400px; margin-left : -200px">
 
-    <ion-item>
+  <form style="position : relative; margin-bottom : 10px"[formGroup]="loginForm" (submit)="loginUser()" novalidate>
+    <ion-item class="centered-items">
       <ion-label stacked>Email</ion-label>
       <ion-input #email formControlName="email" type="email" placeholder="Your email address"
         [class.invalid]="!loginForm.controls.email.valid &&
@@ -20,7 +21,7 @@
       <p>Please enter a valid email.</p>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="centered-items">
       <ion-label stacked>Password</ion-label>
       <ion-input #password formControlName="password" type="password" placeholder="Your password"
         [class.invalid]="!loginForm.controls.password.valid &&
@@ -31,18 +32,20 @@
       <p>Your password needs more than 6 characters.</p>
     </ion-item>
 
-    <button ion-button block type="submit">
+    <button class="centered-items" ion-button block type="submit">
       Login
     </button>
 
   </form>
 
-  <button ion-button block clear (click)="goToResetPassword()">
-    I forgot my password :-(
+  <button ion-button block clear class="centered-items" style="margin-top : 0" (click)="goToResetPassword()">
+    I forgot my password
   </button>
 
-  <button ion-button block clear (click)="createAccount()">
+  <button class="centered-items" style="background-color : #afabab; margin : 30px 0" ion-button block (click)="createAccount()">
     Create a new account
   </button>
+
+  </div>
 
 </ion-content>
