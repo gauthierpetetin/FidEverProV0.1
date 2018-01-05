@@ -66,7 +66,7 @@ export class LoginPage {
             //this.navCtrl.setRoot(HomePage);
             this.navCtrl.insert(0,HomePage);
             this.navCtrl.popToRoot();
-            this.ctx.init();
+            this.ctx.init(true, this.ctx.fideverProContractAddress);
           });
 
         }, error => {

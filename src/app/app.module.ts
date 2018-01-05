@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { HttpModule } from '@angular/http';
 
 
@@ -20,6 +21,8 @@ import { ContextProvider } from '../providers/context/context';
 import { EthapiProvider } from '../providers/ethapi/ethapi';
 import { FidapiProvider } from '../providers/fidapi/fidapi';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { WalletProvider } from '../providers/wallet/wallet';
+import { TransactionProvider } from '../providers/transaction/transaction';
 
 
 /**************Modules**************************/
@@ -35,8 +38,8 @@ import { IonicImageLoader } from 'ionic-image-loader';
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { ResetPasswordPageModule } from '../pages/reset-password/reset-password.module';
+import { SendCoinsPageModule } from '../pages/send-coins/send-coins.module';
 import { HomePage } from '../pages/home/home';
-import { WalletProvider } from '../providers/wallet/wallet';
 
 
 /*********************FIDEVER PRO************************/
@@ -58,7 +61,8 @@ import { WalletProvider } from '../providers/wallet/wallet';
     IonicImageLoader.forRoot(),
     LoginPageModule,
     SignupPageModule,
-    ResetPasswordPageModule
+    ResetPasswordPageModule,
+    SendCoinsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -77,13 +81,16 @@ import { WalletProvider } from '../providers/wallet/wallet';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
     StatusBar,
+    ScreenOrientation,
     AlertProvider,
     AuthProvider,
     ContextProvider,
     FirestoreProvider,
     FidapiProvider,
     EthapiProvider,
-    BarcodeScanner, WalletProvider
+    BarcodeScanner,
+    WalletProvider,
+    TransactionProvider
   ]
 })
 export class AppModule {}

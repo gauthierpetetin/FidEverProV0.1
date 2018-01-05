@@ -1,0 +1,149 @@
+<!--
+  Generated template for the SendCoinsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [ngStyle]="{'background-color': coinColor}">
+    <ion-title *ngIf="!transactionSubmitted">Send FIDs</ion-title>
+    <ion-title *ngIf="transactionSubmitted">Success</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goBack()" *ngIf="!transactionSubmitted">
+        Back
+      </button>
+      <button ion-button (click)="goBack()" *ngIf="transactionSubmitted">
+        Ok
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+  <div padding style="
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 0 0;
+    height: 100%;
+    width: 100%"
+    *ngIf="transactionSubmitted">
+
+    <ion-row style="
+      height: 50px;
+      width: 100%;
+      margin-top: 30px;
+      position: relative;" >
+    <h4 style="
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      width: 80%;
+      margin-left: -40%;
+      color: grey">
+      Congratulations !<br>You collected {{coinAmount}} {{coinName}} !
+    </h4>
+    </ion-row>
+
+    <ion-row style="margin-top: 20px; height: 100px;">
+      <!-- <ion-col col-2></ion-col> -->
+      <ion-col col-3 style="position: relative; height: 100%;">
+          <h1 [ngStyle]="{'color': coinColor}" style="
+            text-align: right;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            height: 60px;
+            right: 0px;
+            margin-top: -30px;
+            font-size: 45px;
+            color: grey">
+            {{coinAmount}}
+          </h1>
+      </ion-col>
+
+      <ion-col col-2 style="position: relative; height: 100%;">
+         <img-loader
+           fallback="assets/images/default_images/defaultCoin.png"
+           style="
+           position: absolute;
+           height: 70px;
+           width: 70px;
+           left: 50%;
+           top: 50%;
+           margin-top: -35px;
+           margin-left: -35px;"
+           src="{{coinIcon}}" useImg>
+         </img-loader>
+      </ion-col>
+
+      <ion-col col-2 style="position: relative; height: 100%;">
+        <img-loader
+          fallback="assets/images/other/arrow_right.png"
+          style="
+          position: absolute;
+          height: 70px;
+          width: 100px;
+          left: 50%;
+          top: 50%;
+          margin-top: -35px;
+          margin-left: -50px;"
+          src="assets/images/other/arrow_right.png" useImg>
+        </img-loader>
+      </ion-col>
+      <ion-col col-2 style="position: relative; height: 100%;">
+        <img-loader
+          fallback="assets/images/default_images/defaultProfile.png"
+          style="
+          position: absolute;
+          height: 70px;
+          width: 70px;
+          left: 50%;
+          top: 50%;
+          margin-top: -35px;
+          margin-left: -35px;"
+          src="assets/images/default_images/defaultProfile.png" useImg>
+        </img-loader>
+      </ion-col>
+
+      <ion-col col-3 style="height: 100%;"></ion-col>
+
+    </ion-row>
+
+    <ion-row style="
+      height: 50px;
+      width: 100%;
+      margin-top: 20px;
+      position: relative;" >
+    <p style="
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      width: 80%;
+      margin-left: -40%;
+      color: grey;
+      font-size: 14px">
+      Transaction submitted successfully.
+    </p>
+    </ion-row>
+
+    <ion-row style="height: 40px; position: relative; margin-top: 20px">
+      <button ion-button (click)="goBack()" [ngStyle]="{'background-color': coinColor}"
+        style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 40px;
+        width: 70%;
+        margin-top: -20px;
+        margin-left: -35%;">
+        Ok
+      </button>
+    </ion-row>
+
+  </div>
+
+</ion-content>

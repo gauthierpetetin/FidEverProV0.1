@@ -72,7 +72,7 @@ export class SignupPage {
             //this.nav.setRoot(HomePage);
             this.nav.insert(0,HomePage);
             this.nav.popToRoot();
-            this.ctx.init();
+            this.ctx.init(true, this.ctx.fideverProContractAddress);
           });
         }, (globalWalletError) => {
           console.log('Global EthWallet creation error : ', globalWalletError);

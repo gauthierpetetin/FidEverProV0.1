@@ -95,6 +95,7 @@
     </plugin>
     <plugin name="cordova-plugin-file" spec="^5.0.0" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.0" />
+    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <engine name="android" spec="^6.3.0" />
     <engine name="ios" spec="~4.4.0" />
 </widget>

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar id="colorNavbar">
+  <ion-navbar [ngStyle]="{'background-color': coinColor}">
 
     <ion-title>
       Collect {{coinName}}s
@@ -20,66 +20,72 @@
 
   <ion-row style="width: 100%; height: 100%">
 
-    <ion-col col-5 style="height: 100%; width: 100%; margin: 0 0; padding: 0 0;">
-      <!-- <ion-card style="width: 100%; height: 100%; margin: 0 0; padding: 0 0; background-color: green;">
-        <ion-card-content style="width: 100%; height: 100%; margin: 0 0; padding: 0 0; background-color: blue;"> -->
-
-          <ion-row style="margin-top: 20px; height: 60px; padding: 0 20px;background-color: transparent;">
+    <ion-col col-5 style="height: 100%; width: 100%; margin: 0 0; padding: 0 0; background-color: white;">
+      <button style="width: 100%; height: 100%; margin: 0 0; padding: 0 0; background-color: transparent;">
+          <ion-row style="position: relative; padding-top: 20px; height: 80px; padding: 0 0;">
             <h1 text-center [ngStyle]="{'color': ctx.fidOrange}"
-              style="font-size: 24px;">
+              style="
+                position: absolute;
+                height: 60px;
+                width: 100%;
+                top: 50%;
+                left: 50%;
+                margin-top: -30px;
+                margin-left: -50%;
+                padding: 0 20px;
+                font-size: 24px;
+                ">
               <b>1.Download FidEver mobile app.</b>
             </h1>
           </ion-row>
 
-          <ion-row style="height: 400px; position: relative; margin-top: 20px; margin-right: 20px;">
+          <ion-row style="height: 420px; position: relative; padding-top: 20px; margin-right: 20px;">
             <ion-col col-11>
             <img-loader
-              fallback="assets/other/ecran_receive.png"
+              fallback="assets/images/other/ecran_receive.png"
               style="
               position: absolute;
               height: 400px;
               width: 200px;
               left: 50%;
               margin-left: -100px;"
-              src="assets/other/ecran_receive.png" useImg>
+              src="assets/images/other/ecran_receive.png" useImg>
             </img-loader>
           </ion-col>
           <ion-col col-1>
             <img-loader
-              fallback="assets/other/triangle.png"
+              fallback="assets/images/other/triangle.png"
               style="
               position: absolute;
               height: 200px;
               width: 24px;
               left: 50%;
               margin-left: -12px;"
-              src="assets/other/triangle.png" useImg>
+              src="assets/images/other/triangle.png" useImg>
             </img-loader>
           </ion-col>
           </ion-row>
 
-          <ion-row style="height: 50px; position: relative; margin-top: 20px;">
+          <ion-row style="height: 50px; position: relative; margin: 0 0; padding-top: 20px;">
             <img-loader
-              fallback="assets/other/appStores.png"
+              fallback="assets/images/other/appStores.png"
               style="
               position: absolute;
               height: 50px;
               width: 200px;
               left: 50%;
               margin-left: -100px;"
-              src="assets/other/appStores.png" useImg>
+              src="assets/images/other/appStores.png" useImg>
             </img-loader>
           </ion-row>
 
-        <!-- </ion-card-content>
-
-      </ion-card> -->
+      </button>
     </ion-col>
 
     <ion-col col-7 style="height: 100%; width: 100%; margin: 0 0; padding: 0 0;">
-      <button (click)="distributeCoins()" style="width: 100%; height: 100%; margin: 0 0; padding: 0 0;">
+      <button (click)="distributeCoins()" style="width: 100%; height: 100%; margin: 0 0; padding: 0 0; background-color: transparent;">
 
-        <ion-row style="position: relative; height: 60px; margin-top: 20px; padding: 0 20px;">
+        <ion-row style="position: relative; height: 80px; padding-top: 20px; padding: 0 0;">
           <h1 text-center [ngStyle]="{'color': coinColor}"
             style="
               position: absolute;
@@ -89,15 +95,15 @@
               left: 50%;
               margin-top: -30px;
               margin-left: -50%;
-              padding: 0 0;
+              padding: 0 20px;
               font-size: 24px;
               ">
-            <b>2.Tap the screen to collect <br>a free {{coinName}} !</b>
+            <b>2.Tap the screen to scan your ID<br> and collect a free {{coinName}} !</b>
           </h1>
       </ion-row>
-      <ion-row style="position: relative; height: 400px; margin-top: 20px;">
+      <ion-row style="position: relative; height: 420px; padding-top: 20px;">
         <img
-          fallback="assets/coins/Coin.png"
+          fallback="assets/images/default_images/defaultCoin.png"
           style="
           object-fit: auto;
           position: absolute;
@@ -105,12 +111,12 @@
           width: 200px;
           top: 50%;
           left: 50%;
-          margin-top: -130px;
+          margin-top: -100px;
           margin-left: -100px;"
           src="{{coinIcon}}" useImg>
         <!-- </img> -->
       </ion-row>
-      <ion-row style="height: 50px">
+      <ion-row style="height: 50px;">
       </ion-row>
 
     </button>

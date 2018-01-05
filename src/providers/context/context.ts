@@ -14,14 +14,22 @@ import { AlertProvider} from '../../providers/alert/alert';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
+
+enum IconSize {
+    NORMAL,
+    XXL,
+}
+
 @Injectable()
 export class ContextProvider {
 
   c: any = {};
 
-  storageKey : string = 'storageKey';
+  cordovaPlatform: boolean = false;
 
-  contractAddresses : string = 'coinsAddresses';
+  storageKey: string = 'storageKey';
+
+  contractAddresses: string = 'coinsAddresses';
   names: string = 'coinNames';
   colors: string = 'coinColors';
   amounts: string = 'coinAmounts';
@@ -40,6 +48,13 @@ export class ContextProvider {
     infoAddress: string = 'ethAddress';
     infoPrivateKey: string = 'ethPrivateKey';
     infoEmail: string = 'email';
+
+
+  iconSize: IconSize = IconSize.NORMAL;
+
+  /********* Only for FidEver Pro***********/
+  fideverProContractAddress: string = "0xbe5c6930b754df6dc6a7a7f17f12180335e7bc75";
+  /*****************************************/
 
   ethAccount: {
       address: string,
@@ -82,6 +97,7 @@ export class ContextProvider {
     public alertProvider: AlertProvider
   ) {
     console.log('Hello ContextProvider Provider');
+
   }
 
 /***************SETTERS*********************/
@@ -158,12 +174,18 @@ export class ContextProvider {
     }else {return [];}
   }
 
-  init(coinParameter?: string): Promise<any> {
+  init(XXL_images: boolean, coinParameter?: string): Promise<any> {
     console.log('Open init');
     var self = this;
     return new Promise(
       function(resolve, reject) {
 
+        if(XXL_images) {
+          self.iconSize = IconSize.XXL;
+        }
+        else {
+          self.iconSize = IconSize.NORMAL;
+        }
 
         self.initContext();
         self.recoverContext().then( (address) => {
@@ -171,9 +193,9 @@ export class ContextProvider {
           if(address != self.nulleth) {
 
             if (coinParameter) { // Only for FidEver Pro
-              this.downloadCoinDetail(coinParameter).then( (coinDetails) => {
+              self.downloadCoinDetail(coinParameter).then( (coinDetails) => {
                 console.log('single coinDetail download : ', coinDetails);
-                this.downloadCoinIcon(this.coinContractAddress).then( (coinIcon) => {
+                self.downloadCoinIcon(coinParameter).then( (coinIcon) => {
                   console.log('single coinIcon download', coinIcon);
                   resolve(coinDetails);
                 }).catch( (error) => {console.log('single coinIcon download error : ', error); reject(error);});
@@ -593,7 +615,14 @@ downloadCoinIcon(cc: string): Promise<any> {
 
   return new Promise(
     function(resolve, reject) {
-      self.firestoreProvider.downloadImageAtPath('coinIcons/'.concat(cc,'.png')).then(
+      let icon_size: string;
+      if( self.iconSize == IconSize.XXL) {
+        icon_size = 'XXL_images/';
+      }
+      else {
+        icon_size = 'normal_images/';
+      }
+      self.firestoreProvider.downloadImageAtPath('coinIcons/'.concat(icon_size,cc,'.png')).then(
         function(result : string){
           self.c[self.icons][cc] = result;
           console.log(cc.concat(' image added to coinIcons: ',''/*JSON.stringify(self.c[self.icons])*/));
