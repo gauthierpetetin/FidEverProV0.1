@@ -36,6 +36,7 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { ResetPasswordPageModule } from '../pages/reset-password/reset-password.module';
 import { HomePage } from '../pages/home/home';
+import { WalletProvider } from '../providers/wallet/wallet';
 
 
 /*********************FIDEVER PRO************************/
@@ -82,7 +83,7 @@ import { HomePage } from '../pages/home/home';
     FirestoreProvider,
     FidapiProvider,
     EthapiProvider,
-    BarcodeScanner
+    BarcodeScanner, WalletProvider
   ]
 })
 export class AppModule {}

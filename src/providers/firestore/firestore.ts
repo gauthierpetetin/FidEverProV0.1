@@ -51,15 +51,28 @@ export class FirestoreProvider {
   }
 
 
-  getCollection(collectionName : string) {
-    console.log('Open firestoreProvider-getcollection');
-
-    if(this.angularFirestore.collection<any[]>(collectionName)){
-        this.afCoinCollection = this.angularFirestore.collection<any[]>(collectionName);
+  getCollection(collectionName : string, orderParameter?: string) {
+    if(orderParameter) {
+      console.log('Open firestoreProvider-getcollection with orderParameter : ', orderParameter,'.');
+      if(this.angularFirestore.collection<any[]>(collectionName)){
+          this.afCoinCollection = this.angularFirestore.collection<any[]>(collectionName, ref => ref
+            .orderBy(orderParameter)
+          );
+      }
+      else{
+        console.log('Collection does not exist');
+        return;
+      }
     }
-    else{
-      console.log('Collection does not exist');
-      return;
+    else {
+      console.log('Open firestoreProvider-getcollection without orderParameter.');
+      if(this.angularFirestore.collection<any[]>(collectionName)){
+          this.afCoinCollection = this.angularFirestore.collection<any[]>(collectionName);
+      }
+      else{
+        console.log('Collection does not exist');
+        return;
+      }
     }
 
     //--------FIRESTORE QUERIES-----------https://github.com/angular/angularfire2/blob/master/docs/firestore/querying-collections.md

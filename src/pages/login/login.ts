@@ -1,30 +1,51 @@
 import { Component } from '@angular/core';
-import {
-  IonicPage,
-  NavController,
-  LoadingController,
-  Loading,
-  AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController } from 'ionic-angular';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
 
+import { ContextProvider} from '../../providers/context/context';
+import { WalletProvider} from '../../providers/wallet/wallet';
+
 //
 import { HomePage } from '../home/home';
+import { SignupPage } from '../signup/signup';
+import { ResetPasswordPage } from '../reset-password/reset-password';
 
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
 })
 export class LoginPage {
 
   public loginForm:FormGroup;
   public loading:Loading;
 
-  constructor(public navCtrl: NavController, public authData: AuthProvider,
-    public formBuilder: FormBuilder, public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController) {
+  info : string;
+
+  constructor(
+    public navCtrl: NavController,
+    public authData: AuthProvider,
+    //public ethapiProvider: EthapiProvider,
+    //public fidapiProvider: FidapiProvider,
+    public formBuilder: FormBuilder,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public ctx: ContextProvider,
+    public walletProvider: WalletProvider
+  ) {
+
+      console.log('Login Page constructor');
+
+      this.info = this.ctx.info;
 
       this.loginForm = formBuilder.group({
         email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -35,11 +56,19 @@ export class LoginPage {
     loginUser(){
       if (!this.loginForm.valid){
         console.log(this.loginForm.value);
-      } else {
+      }
+      else {
+        this.ctx.c[this.info]['email']=this.loginForm.value.email;
+        this.ctx.save();
         this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password)
         .then( authData => {
-          console.log("go to HomePage");
-          this.navCtrl.setRoot(HomePage);
+          this.walletProvider.createGlobalEthWallet().then( () => {
+            //this.navCtrl.setRoot(HomePage);
+            this.navCtrl.insert(0,HomePage);
+            this.navCtrl.popToRoot();
+            this.ctx.init();
+          });
+
         }, error => {
           this.loading.dismiss().then( () => {
             let alert = this.alertCtrl.create({
@@ -63,11 +92,11 @@ export class LoginPage {
   }
 
   goToResetPassword(){
-    this.navCtrl.push('ResetPasswordPage');
+    this.navCtrl.push(ResetPasswordPage);
   }
 
   createAccount(){
-    this.navCtrl.push('SignupPage');
+    this.navCtrl.push(SignupPage);
   }
 
 }

@@ -4,6 +4,9 @@ import { Platform } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+/**************Providers************************/
+import { ContextProvider} from '../providers/context/context';
+
 /**************Modules**************************/
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -11,6 +14,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 /**************Pages****************************/
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+
 
 
 /********************FIDEVER PRO**********************************/
@@ -25,20 +29,30 @@ export class MyApp {
     platform: Platform,
     afAuth: AngularFireAuth,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    ctx: ContextProvider
   ) {
 
     const authObserver = afAuth.authState.subscribe( user => {
       if (user) {
-        console.log('Authenticated user : '.concat(JSON.stringify(user)));
-        this.rootPage = HomePage;
-        console.log('HomePage as rootPage');
-        authObserver.unsubscribe();
+        console.log('userID : ', user.uid);
+        ctx.init().then( (ethAccountFound) => {
+          if(ethAccountFound) {
+            console.log('Context init success with Eth account');
+            this.goToHomePage(authObserver);
+          }
+          else {
+            console.log('Context init success without Eth account');
+            this.goToWelcomePage(ctx, authObserver);
+          }
+
+        }, (err) => {
+          console.log('Context init error : ', err);
+          this.goToWelcomePage(ctx, authObserver);
+        });;
+
       } else {
-        //this.rootPage = 'LoginPage';
-        this.rootPage = LoginPage;
-        console.log('LoginPage as rootPage');
-        authObserver.unsubscribe();
+        this.goToWelcomePage(ctx, authObserver);
       }
     });
 
@@ -49,7 +63,20 @@ export class MyApp {
       //statusBar.backgroundColorByHexString('#fe9400');
       //statusBar.hide();
 
-      splashScreen.hide();
+      //splashScreen.hide();
     });
   }
+
+  goToHomePage(obs: any) {
+  this.rootPage = HomePage;
+  obs.unsubscribe();
+}
+
+goToWelcomePage(ctx: any, obs: any) {
+  ctx.clear();
+  this.rootPage = LoginPage;
+  obs.unsubscribe();
+}
+
+
 }

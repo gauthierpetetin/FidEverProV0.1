@@ -2,9 +2,9 @@ page-home {
 
   @import "../../theme/variables.scss";
 
-  ion-content{
-      background-image: url('../assets/images/background/background75.png') !important;
-  }
+  // ion-content{
+  //     background-image: url('../assets/background/large_images/background75.png') !important;
+  // }
 
 .greyBar {
   background-color: color($colors, fidGrey);
@@ -12,7 +12,7 @@ page-home {
 }
 
 .toolbar-background {
-  background-color: color($colors, fidOrange);
+  background-color: transparent;
 }
 
 .toolbar-title {
