@@ -1,0 +1,51 @@
+{
+  "LOGIN": {
+    "TITLE": "S'identifier",
+    "EMAIL": {
+      "TITLE": "Email",
+      "PLACEHOLDER": "Ton adresse email",
+      "VALID": "Adresse email non valide."
+    },
+    "PASSWORD": {
+      "TITLE": "Mot de passe",
+      "PLACEHOLDER": "Ton mot de passe",
+      "VALID": "Ton mot de passe doit contenir plus de 6 caractères."
+    },
+    "PASSWORD_FORGOT": "Mot de passe oublié",
+    "NEW_ACCOUNT": "Créer un nouveau compte"
+  },
+  "SIGNUP": {
+    "TITLE": "Nouveau compte",
+    "EMAIL": {
+      "TITLE": "Email",
+      "PLACEHOLDER": "Ton adresse email",
+      "VALID": "Adresse email non valide."
+    },
+    "PASSWORD": {
+      "TITLE": "Mot de passe",
+      "PLACEHOLDER": "Ton mot de passe",
+      "VALID": "Ton mot de passe doit contenir plus de 6 caractères."
+    },
+    "NEW_ACCOUNT": "Créer un nouveau compte"
+  },
+  "RESET_PASSWORD": {
+    "TITLE": "Réinitialisation mot de passe",
+    "EMAIL": {
+      "TITLE": "Email",
+      "PLACEHOLDER": "Ton adresse email",
+      "VALID": "Adresse email non valide."
+    },
+    "RESET": "Réinitialiser mot de passe",
+    "MESSAGE": "Nous venons de t'envoyer un email pour réinitialiser ton mot de passe."
+  },
+  "HOME": {
+    "DOWNLOAD": "1.Télécharge l'application FidEver.",
+    "TAPSCREEN1": "2.Tape l'écran pour scanner ton ID",
+    "TAPSCREEN2": "et collecter gratuitement un",
+    "COLLECT": "Collecte"
+  },
+  "UPDATE": {
+    "TITLE": "Merci de télécharger la nouvelle application FidEver pour accéder aux fonctionnalités mises à jour.",
+    "BUTTON": "Mettre à jour !"
+  }
+}

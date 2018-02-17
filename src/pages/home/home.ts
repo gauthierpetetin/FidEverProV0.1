@@ -9,6 +9,8 @@ import { ContextProvider } from '../../providers/context/context';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -32,11 +34,18 @@ export class HomePage {
     public authProvider: AuthProvider,
     public ctx: ContextProvider,
     private barcodeScanner: BarcodeScanner,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private translateService: TranslateService
   ){
     this.coinName = this.ctx.getCoinName(this.ctx.fideverProContractAddress);
     this.coinColor = this.ctx.getCoinColor(this.ctx.fideverProContractAddress);
     this.coinIcon = this.ctx.getCoinIcon(this.ctx.fideverProContractAddress);
+
+    this.translate();
+
+  }
+
+  translate() {
 
   }
 

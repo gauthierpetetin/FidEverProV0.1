@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @IonicPage()
 @Component({
   selector: 'page-reset-password',
@@ -12,13 +14,30 @@ import { EmailValidator } from '../../validators/email';
 export class ResetPasswordPage {
   public resetPasswordForm:FormGroup;
 
-  constructor(public authData: AuthProvider, public formBuilder: FormBuilder,
-    public nav: NavController, public alertCtrl: AlertController) {
+  emailPlaceholder: string;
+  resetMessage: string;
+
+  constructor(
+    public authData: AuthProvider,
+    public formBuilder: FormBuilder,
+    public nav: NavController,
+    public alertCtrl: AlertController,
+    private translateService: TranslateService
+  ) {
 
     this.resetPasswordForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-    })
+    });
+
+    this.translate();
+
   }
+
+  translate() {
+    this.translateService.get('RESET_PASSWORD.EMAIL.PLACEHOLDER').subscribe(emailPlaceholder => { this.emailPlaceholder = emailPlaceholder.toString(); });
+    this.translateService.get('RESET_PASSWORD.MESSAGE').subscribe(resetMessage => { this.resetMessage = resetMessage.toString(); });
+  }
+
 
   /**
    * If the form is valid it will call the AuthData service to reset the user's password displaying a loading
@@ -33,7 +52,7 @@ export class ResetPasswordPage {
       this.authData.resetPassword(this.resetPasswordForm.value.email)
       .then((user) => {
         let alert = this.alertCtrl.create({
-          message: "We just sent you a reset link to your email",
+          message: this.resetMessage,
           buttons: [
             {
               text: "Ok",

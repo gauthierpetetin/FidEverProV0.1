@@ -1,0 +1,94 @@
+<!--
+  Generated template for the UpdatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>update</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content>
+
+  <div padding style="background-color: white; height: 100%; width: 100%;">
+
+
+  <ion-row style="height: 100px; position: relative; margin-top: 130px">
+    <img-loader
+      fallback="assets/images/other/logo_only.png"
+      style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100px;
+        width: 100px;
+        margin-top: -50px;
+        margin-left: -50px;"
+      src="assets/images/other/logo_only.png"
+      useImg
+    ></img-loader>
+  </ion-row>
+
+  <ion-row style="margin-top: 20px;">
+
+    <ion-col col-12 style="
+      padding: 0 0;
+      margin: 0 0;
+      display: table;">
+      <div style="
+        padding: 0 0;
+        margin: 0 0;
+        height: 25px !important;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        ">
+        <h2 style="
+          color: grey;
+          font-size: 16px;
+          margin: 0px 5px;
+          text-overflow: ellipsis;
+          white-space: normal;
+          ">
+          {{ 'UPDATE.TITLE' | translate }}
+        </h2>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="height: 40px; position: relative; margin-top: 50px">
+    <button ion-button (click)="updateApp()" [ngStyle]="{'background-color': coinColor}"
+      style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 40px;
+      width: 70%;
+      margin-top: -20px;
+      margin-left: -35%;">
+      {{ 'UPDATE.BUTTON' | translate }}
+    </button>
+  </ion-row>
+
+  <img-loader
+    fallback="assets/images/other/update.png"
+    style="
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 140px;
+      width: 140px;
+      margin-top: -70px;
+      margin-left: -70px;"
+    src="assets/images/other/update.png"
+    useImg
+  ></img-loader>
+
+</div>
+
+</ion-content>

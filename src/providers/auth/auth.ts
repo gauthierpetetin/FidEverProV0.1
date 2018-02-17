@@ -8,6 +8,11 @@ export class AuthProvider {
 
   constructor(public afAuth: AngularFireAuth) {
     console.log('Open-Close authentification provider constructor');
+
+  }
+
+  setLanguage(language: string) {
+    this.afAuth.auth.languageCode = language;
   }
 
   getUserID() {
@@ -39,6 +44,24 @@ export class AuthProvider {
   signupUser(newEmail: string, newPassword: string): Promise<any> {
     console.log('signupUser');
     return this.afAuth.auth.createUserWithEmailAndPassword(newEmail, newPassword);
+  }
+
+  setNewEmail(newEmail: string): Promise<any> {
+    console.log('setNewEmail');
+    return this.afAuth.auth.currentUser.updateEmail(newEmail);
+  }
+
+  setProfile(newName: string, newProfilePicture: string): Promise<any> {
+    console.log('setNewProfile');
+    return this.afAuth.auth.currentUser.updateProfile({
+      displayName: newName,
+      photoURL: newProfilePicture
+    });
+  }
+
+  setNewPassword(newPassword: string): Promise<any> {
+    console.log('setNewPassword');
+    return this.afAuth.auth.currentUser.updatePassword(newPassword);
   }
 
 }

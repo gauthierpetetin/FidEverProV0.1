@@ -1,0 +1,51 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "EMAIL": {
+      "TITLE": "Email",
+      "PLACEHOLDER": "Your email address",
+      "VALID": "Please enter a valid email."
+    },
+    "PASSWORD": {
+      "TITLE": "Password",
+      "PLACEHOLDER": "Your password",
+      "VALID": "Your password needs more than 6 characters."
+    },
+    "PASSWORD_FORGOT": "I forgot my password.",
+    "NEW_ACCOUNT": "Create a new account"
+  },
+  "SIGNUP": {
+    "TITLE": "New account",
+    "EMAIL": {
+      "TITLE": "Email",
+      "PLACEHOLDER": "Your email address",
+      "VALID": "Please enter a valid email."
+    },
+    "PASSWORD": {
+      "TITLE": "Password",
+      "PLACEHOLDER": "Your password",
+      "VALID": "Your password needs more than 6 characters."
+    },
+    "NEW_ACCOUNT": "Create a new account"
+  },
+  "RESET_PASSWORD": {
+    "TITLE": "Reset Password",
+    "EMAIL": {
+      "TITLE": "Email",
+      "PLACEHOLDER": "Your email address",
+      "VALID": "Please enter a valid email."
+    },
+    "RESET": "Reset your password",
+    "MESSAGE": "We just sent you a reset link to your email."
+  },
+  "HOME": {
+    "DOWNLOAD": "1.Download FidEver mobile app.",
+    "TAPSCREEN1": "2.Tap the screen to scan your ID",
+    "TAPSCREEN2": "and collect a free",
+    "COLLECT": "Collect"
+  },
+  "UPDATE": {
+    "TITLE": "Please download the new app to download the upgrade.",
+    "BUTTON": "Update for free!"
+  }
+}

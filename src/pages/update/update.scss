@@ -1,0 +1,59 @@
+page-update {
+
+  @import "../../theme/variables.scss";
+
+ion-content{
+  //background-image: url('../assets/images/background/background15.png') !important;
+  background-color: white;
+}
+
+
+.toolbar-background {
+  //background-color: color($colors, fidLightGrey);
+  background-color: transparent;
+}
+
+.toolbar-title {
+  color: color($colors, fidDarkGrey) !important;
+}
+
+.bar-button-default {
+  color: color($colors, fidDarkGrey) !important;
+}
+
+//Test pour aligner les éléments contenus dans les items de la liste
+h2.text{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+  form {
+    margin-bottom: 32px;
+    button {
+      margin-top: 20px;
+    }
+  }
+
+
+  p {
+    font-size: 0.8em;
+    color: #d2d2d2;
+  }
+
+  ion-label {
+    margin-left: 5px;
+  }
+
+  ion-input {
+    padding: 5px;
+  }
+
+  .invalid {
+    border-bottom: 1px solid #FF6153;
+  }
+
+  .error-message .item-inner {
+    border-bottom: 0 !important;
+  }
+
+}

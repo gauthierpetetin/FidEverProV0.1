@@ -19,6 +19,8 @@ export class TransactionProvider {
   alertTitle: string = 'title';
   alertText: string = 'text';
 
+  language: string;
+
   constructor(
     public http: Http,
     public ctx: ContextProvider,
@@ -26,6 +28,8 @@ export class TransactionProvider {
     public ethapiProvider: EthapiProvider
   ) {
     console.log('Hello TransactionProvider Provider');
+
+    this.language = this.ctx.getLanguage();
   }
 
 
@@ -55,6 +59,7 @@ export class TransactionProvider {
         ).then( (transactionH) => {
           console.log('Coin transfer submitted successfully to Blockchain : ',transactionH);
           self.fidapiProvider.transferCoins(
+            self.ctx.getUid(),
             coinContractAddress,
             myAddress,//fromAddress
             toAddress,//toAddress
@@ -62,7 +67,7 @@ export class TransactionProvider {
             transactionH
           ).then( () => {
             console.log('Coin transfer submitted successfully to Firestore : ',transactionH);
-            resolve();
+            resolve(transactionH);
           }, (fidapi_error) => {
             let err = {};
             err[self.alertTitle] = 'FidApi error';
@@ -73,8 +78,14 @@ export class TransactionProvider {
         }, (ethapi_error) => {
           if (ethapi_error == 'INVALID') {
             let err = {};
-            err[self.alertTitle] = 'Invalid recipient';
-            err[self.alertText] = 'Please select a valid recipient.';
+            if(self.language == 'fr') {
+              err[self.alertTitle] = 'Adresse invalide';
+              err[self.alertText] = 'Merci de sélectionner un destinataire valide.';
+            }
+            else {
+              err[self.alertTitle] = 'Invalid recipient';
+              err[self.alertText] = 'Please select a valid recipient.';
+            }
             reject(err);
           }
           else {
@@ -87,15 +98,27 @@ export class TransactionProvider {
         }
         else{
           let err = {};
-          err[self.alertTitle] = 'Invalid coin amount';
-          err[self.alertText] = 'Please select a positive amount of coins first.';
+          if(self.language == 'fr') {
+            err[self.alertTitle] = 'Montant invalide';
+            err[self.alertText] = 'Merci de sélectionner une quantité positive de jetons à envoyer.';
+          }
+          else {
+            err[self.alertTitle] = 'Invalid coin amount';
+            err[self.alertText] = 'Please select a positive amount of coins first.';
+          }
           reject(err);
         }
       }
       else{
         let err = {};
-        err[self.alertTitle] = 'No recipient';
-        err[self.alertText] = 'Please choose a recipient first.';
+        if(self.language == 'fr') {
+          err[self.alertTitle] = 'Pas de destinataire';
+          err[self.alertText] = 'Merci de sélectionner un destinataire.';
+        }
+        else {
+          err[self.alertTitle] = 'No recipient';
+          err[self.alertText] = 'Please choose a recipient first.';
+        }
         reject(err);
       }
   });

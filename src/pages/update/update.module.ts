@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SendCoinsPage } from './send-coins';
+import { UpdatePage } from './update';
+
 
 /**************Modules**************************/
 import { IonicImageLoader } from 'ionic-image-loader';
-
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    SendCoinsPage,
+    UpdatePage,
   ],
   imports: [
-    IonicPageModule.forChild(SendCoinsPage),
+    IonicPageModule.forChild(UpdatePage),
     IonicImageLoader,
     TranslateModule.forChild()
   ],
   exports: [
-    SendCoinsPage
+    UpdatePage
   ]
 })
-export class SendCoinsPageModule {}
+export class UpdatePageModule {}

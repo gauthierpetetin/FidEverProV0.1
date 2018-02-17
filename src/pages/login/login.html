@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Login
+      {{ 'LOGIN.TITLE' | translate }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,39 +11,39 @@
 
   <form style="position : relative; margin-bottom : 10px"[formGroup]="loginForm" (submit)="loginUser()" novalidate>
     <ion-item class="centered-items">
-      <ion-label stacked>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" placeholder="Your email address"
+      <ion-label stacked>{{ 'LOGIN.EMAIL.TITLE' | translate }}</ion-label>
+      <ion-input #email formControlName="email" type="email" placeholder={{emailPlaceholder}}
         [class.invalid]="!loginForm.controls.email.valid &&
           loginForm.controls.email.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  &&
       loginForm.controls.email.dirty">
-      <p>Please enter a valid email.</p>
+      <p>{{ 'LOGIN.EMAIL.VALID' | translate }}</p>
     </ion-item>
 
     <ion-item class="centered-items">
-      <ion-label stacked>Password</ion-label>
-      <ion-input #password formControlName="password" type="password" placeholder="Your password"
+      <ion-label stacked>{{ 'LOGIN.PASSWORD.TITLE' | translate }}</ion-label>
+      <ion-input #password formControlName="password" type="password" placeholder={{passwordPlaceholder}}
         [class.invalid]="!loginForm.controls.password.valid &&
           loginForm.controls.password.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  &&
       loginForm.controls.password.dirty">
-      <p>Your password needs more than 6 characters.</p>
+      <p>{{ 'LOGIN.PASSWORD.VALID' | translate }}</p>
     </ion-item>
 
     <button class="centered-items" ion-button block type="submit">
-      Login
+      {{ 'LOGIN.TITLE' | translate }}
     </button>
 
   </form>
 
   <button ion-button block clear class="centered-items" style="margin-top : 0" (click)="goToResetPassword()">
-    I forgot my password
+    {{ 'LOGIN.PASSWORD_FORGOT' | translate }}
   </button>
 
   <button class="centered-items" style="background-color : #afabab; margin : 30px 0" ion-button block (click)="createAccount()">
-    Create a new account
+    {{ 'LOGIN.NEW_ACCOUNT' | translate }}
   </button>
 
   </div>

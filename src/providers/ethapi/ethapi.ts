@@ -5,6 +5,7 @@
  */
 import { Injectable } from '@angular/core'
 import * as Web3 from 'web3'
+// import { Web3 } from 'web3'
 import * as Tx from 'ethereumjs-tx'
 
 import 'rxjs/add/observable/throw'
@@ -14,6 +15,9 @@ declare const Buffer
 
 @Injectable()
 export class EthapiProvider {
+
+  address: string = 'address';
+  privateKey: string = 'privateKey';
 
   web3: any;
   account: any;
@@ -56,13 +60,21 @@ export class EthapiProvider {
   }
 
   // Create Ethereum address
-  createAccount() {
+  createAccount(passPhrase: string) { // Input has to be hex string
     console.log("Open createAccount");
-    var Accounts = require('web3-eth-accounts');
-    var ethAccount = new Accounts(this.node).create();
-    //console.log("new account created: " + test.address)
-    //console.log("new account created: " + test.privateKey)
-    console.log("Close createAccount : ",ethAccount.address);
+
+    var HDKey = require('ethereumjs-wallet/hdkey');
+    var bip39 = require('bip39')
+    console.log('Passphrase : ', passPhrase);
+    var mnemonic = bip39.entropyToMnemonic(passPhrase);
+    console.log('Mnemonic : ', mnemonic);
+    var seed = bip39.mnemonicToSeed(mnemonic);
+    console.log('Seed : ', seed);
+    var wallet = HDKey.fromMasterSeed(seed).getWallet();
+    console.log('Wallet : ', wallet);
+    var ethAccount: any = {};
+    ethAccount[this.address] = wallet.getAddressString();
+    ethAccount[this.privateKey] = wallet.getPrivateKeyString();
     return ethAccount;
   }
 

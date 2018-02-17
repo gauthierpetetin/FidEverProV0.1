@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Create an Account
+      {{ 'SIGNUP.TITLE' | translate }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,25 +13,25 @@
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
 
     <ion-item class="centered-items">
-      <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email" placeholder="Your email address"
+      <ion-label stacked>{{ 'SIGNUP.EMAIL.TITLE' | translate }}</ion-label>
+      <ion-input formControlName="email" type="email" placeholder={{emailPlaceholder}}
         [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
-      <p>Please enter a valid email.</p>
+      <p>{{ 'SIGNUP.EMAIL.VALID' | translate }}</p>
     </ion-item>
 
     <ion-item class="centered-items">
-      <ion-label stacked>Password</ion-label>
-      <ion-input formControlName="password" type="password"  placeholder="Your password"
+      <ion-label stacked>{{ 'SIGNUP.PASSWORD.TITLE' | translate }}</ion-label>
+      <ion-input formControlName="password" type="password"  placeholder={{passwordPlaceholder}}
         [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
-      <p>Your password needs more than 6 characters.</p>
+      <p>{{ 'SIGNUP.PASSWORD.VALID' | translate }}</p>
     </ion-item>
 
     <button class="centered-items" ion-button block type="submit">
-      Create an Account
+      {{ 'SIGNUP.NEW_ACCOUNT' | translate }}
     </button>
 
   </form>
