@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar [ngStyle]="{'background-color': coinColor}">
-    <ion-title *ngIf="!transactionSubmitted">Send FIDs</ion-title>
-    <ion-title *ngIf="transactionSubmitted">Success</ion-title>
+    <ion-title *ngIf="!transactionSubmitted">{{ 'SEND.TITLE' | translate }} {{coinName}}</ion-title>
+    <ion-title *ngIf="transactionSubmitted">{{ 'SEND.SUCCESS' | translate }}</ion-title>
     <ion-buttons end>
       <button ion-button (click)="goBack()" *ngIf="!transactionSubmitted">
-        Back
+        {{ 'SEND.BACK' | translate }}
       </button>
       <button ion-button (click)="goBack()" *ngIf="transactionSubmitted">
-        Ok
+        {{ 'SEND.OK' | translate }}
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -44,7 +44,7 @@
       width: 80%;
       margin-left: -40%;
       color: grey">
-      Congratulations !<br>You collected {{coinAmount}} {{coinName}} !
+      {{ 'SEND.CONGRATS' | translate }}<br>{{ 'SEND.COLLECTED' | translate }} {{coinAmount}} {{coinName}} !
     </h4>
     </ion-row>
 
@@ -126,7 +126,7 @@
       margin-left: -40%;
       color: grey;
       font-size: 14px">
-      Transaction submitted successfully.
+      {{ 'SEND.TRANSACTION' | translate }}
     </p>
     </ion-row>
 

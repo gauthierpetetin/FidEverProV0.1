@@ -44,6 +44,15 @@
     "TAPSCREEN2": "et collecter gratuitement un",
     "COLLECT": "Collecte"
   },
+  "SEND": {
+    "TITLE": "Envoi de",
+    "SUCCESS": "Succès",
+    "BACK": "Retour",
+    "OK": "Ok",
+    "CONGRATS": "Félicitations !",
+    "COLLECTED": "Tu viens de collecter",
+    "TRANSACTION": "Transaction soumise avec succès."
+  },
   "UPDATE": {
     "TITLE": "Merci de télécharger la nouvelle application FidEver pour accéder aux fonctionnalités mises à jour.",
     "BUTTON": "Mettre à jour !"

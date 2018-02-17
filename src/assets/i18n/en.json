@@ -44,6 +44,15 @@
     "TAPSCREEN2": "and collect a free",
     "COLLECT": "Collect"
   },
+  "SEND": {
+    "TITLE": "Send",
+    "SUCCESS": "Success",
+    "BACK": "Back",
+    "OK": "Ok",
+    "CONGRATS": "Congratulations!",
+    "COLLECTED": "You collected",
+    "TRANSACTION": "Transaction submitted successfully."
+  },
   "UPDATE": {
     "TITLE": "Please download the new app to download the upgrade.",
     "BUTTON": "Update for free!"
